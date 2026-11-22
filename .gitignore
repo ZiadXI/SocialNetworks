@@ -1,0 +1,16 @@
+# Course materials (do not publish copyrighted slides / exams)
+Pastyear Materials/
+ThisYearMaterials/
+
+# Raw STRING database dumps (>50MB; download links provided in README.md)
+data/9606.*.txt
+data/*.gz
+
+# Python caches & environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,110 @@
+===========================================================================
+PART A: SOCIAL NETWORK ANALYSIS — HUMAN PHYSICAL PPI NETWORK (STRING v12.5)
+===========================================================================
+
+1. GRAPH & MATRIX REPRESENTATIONS
+--------------------------------------------------
+Graph Type             : Simple, Undirected, Weighted (Confidence >= 900)
+Total Nodes (N)        : 11,442
+Total Edges (E)        : 70,797
+Max Possible Edges     : 65,453,961  [N(N-1)/2]
+Adjacency Matrix Shape : 11,442 x 11,442 (Symmetric, Binary/Weighted)
+Matrix Sparsity        : 99.8918% zeros (Network Density D = 0.001082)
+
+Sample Adjacency List (Top 5 Hub Proteins — first 8 neighbors shown):
+  RPS27A (k=292): ABCE1, ACTB, ACTG1, ADRM1, AEBP2, AMFR, ANAPC2, ARIH1, ...
+  UBC (k=274): ACTB, ACTG1, ADRM1, AEBP2, AMFR, ANAPC11, ANAPC2, AREL1, ...
+  UBA52 (k=244): ACTB, ACTG1, ADRM1, AEBP2, AMFR, ANAPC2, ARIH1, ARIH2, ...
+  NUDCD1 (k=228): AARS2, ABCC9, ABCD3, ACACA, ACLY, AGO1, AGO4, AGRN, ...
+  TP53 (k=225): ABL1, ATF3, ATM, ATR, AURKA, AURKB, AXIN1, BABAM2, ...
+
+2. NODE DEGREES & QUANTIFYING STRUCTURE
+--------------------------------------------------
+Sum of Degrees (Sum k) : 141,594 (Handshaking Check: 2E = 141,594)
+Average Degree <k>     : 12.3749
+Median Degree          : 5.0
+Min / Max Degree       : 1 / 292
+Power-Law Exponent     : gamma = 2.038 (Log-Log R^2 = 0.915, k >= 5)
+Avg Clustering (C)     : 0.4692
+Global Transitivity    : 0.4829
+
+3. CONNECTIVITY, SPECIAL STRUCTURES & SMALL-WORLD CHECK
+--------------------------------------------------
+Connected Components   : 443
+Giant Component (GCC)  : 10,196 nodes (89.11%), 69,580 edges
+Small Isolated Modules : 272 dyads (size 2), 98 triads (size 3), 438 total (size 2-10)
+Bridge Edges           : 2,228
+Articulation Points    : 1,524 cut-vertices
+Diameter (Giant Comp.) : 16 hops (Exact)
+Avg Path Length (GCC)  : 4.9764 hops (Exact)
+Small-World Verification (vs Random G(10196, <k>=13.65)):
+  - Clustering : C_actual = 0.4692  >>  C_random = 0.00134 (351x higher!)
+  - Path Length: L_actual = 4.9764  ~   L_random = 3.5314
+
+4. CENTRALITY MEASURES — TOP 10 PROTEINS
+--------------------------------------------------
+
+  [DEGREE CENTRALITY (Super-Hubs)]
+    1. RPS27A       | 292       | Comm C1   | Ubiquitin-40S ribosomal protein S27a
+    2. UBC          | 274       | Comm C1   | Polyubiquitin-C
+    3. UBA52        | 244       | Comm C1   | Ubiquitin-60S ribosomal protein L40
+    4. NUDCD1       | 228       | Comm C17  | NudC domain containing 1.
+    5. TP53         | 225       | Comm C1   | Cellular tumor antigen p53
+    6. EGFR         | 194       | Comm C0   | Epidermal growth factor receptor
+    7. H4C6         | 189       | Comm C1   | Histone H4
+    8. H3C1         | 183       | Comm C1   | H3 clustered histone 1.
+    9. EP300        | 177       | Comm C1   | Histone acetyltransferase p300
+   10. UBB          | 176       | Comm C1   | Polyubiquitin-B
+
+  [BETWEENNESS CENTRALITY (Pathway Bridges, k=500 pivots)]
+    1. NUDCD1       | 0.09594   | Comm C17  | NudC domain containing 1.
+    2. TP53         | 0.05332   | Comm C1   | Cellular tumor antigen p53
+    3. EGFR         | 0.05052   | Comm C0   | Epidermal growth factor receptor
+    4. MAPT         | 0.04254   | Comm C0   | Microtubule-associated protein tau
+    5. GNB1         | 0.03214   | Comm C7   | Guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1
+    6. UBC          | 0.03172   | Comm C1   | Polyubiquitin-C
+    7. RPS27A       | 0.03095   | Comm C1   | Ubiquitin-40S ribosomal protein S27a
+    8. CTNNB1       | 0.02483   | Comm C8   | Catenin beta-1
+    9. ACTB         | 0.02364   | Comm C3   | Actin, cytoplasmic 1, N-terminally processed
+   10. HDAC1        | 0.02140   | Comm C3   | Histone deacetylase 1
+
+  [CLOSENESS CENTRALITY (Global Reach / Fast Signalers)]
+    1. TP53         | 0.28551   | Comm C1   | Cellular tumor antigen p53
+    2. NUDCD1       | 0.28088   | Comm C17  | NudC domain containing 1.
+    3. RPS27A       | 0.27729   | Comm C1   | Ubiquitin-40S ribosomal protein S27a
+    4. UBC          | 0.27673   | Comm C1   | Polyubiquitin-C
+    5. MAPT         | 0.27533   | Comm C0   | Microtubule-associated protein tau
+    6. EGFR         | 0.27412   | Comm C0   | Epidermal growth factor receptor
+    7. CTNNB1       | 0.26871   | Comm C8   | Catenin beta-1
+    8. HSP90AA1     | 0.26810   | Comm C6   | Heat shock protein HSP 90-alpha
+    9. HSP90AB1     | 0.26575   | Comm C6   | Heat shock protein HSP 90-beta
+   10. HDAC1        | 0.26516   | Comm C3   | Histone deacetylase 1
+
+  [PAGERANK (Prestigious / Core Regulators)]
+    1. GNB1         | 0.00217   | Comm C7   | Guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1
+    2. NUDCD1       | 0.00210   | Comm C17  | NudC domain containing 1.
+    3. GNAI1        | 0.00161   | Comm C7   | Guanine nucleotide-binding protein G(i) subunit alpha-1
+    4. UBC          | 0.00144   | Comm C1   | Polyubiquitin-C
+    5. EGFR         | 0.00144   | Comm C0   | Epidermal growth factor receptor
+    6. TP53         | 0.00133   | Comm C1   | Cellular tumor antigen p53
+    7. TRIM28       | 0.00127   | Comm C27  | Transcription intermediary factor 1-beta
+    8. RPS27A       | 0.00113   | Comm C1   | Ubiquitin-40S ribosomal protein S27a
+    9. HDAC1        | 0.00102   | Comm C3   | Histone deacetylase 1
+   10. EP300        | 0.00095   | Comm C1   | Histone acetyltransferase p300
+
+5. COMMUNITY DETECTION (LOUVAIN) & MODULARITY
+--------------------------------------------------
+Total Communities      : 495
+Modularity Score (Q)   : 0.8146  (Strong community structure > 0.30)
+
+Top 5 Largest Biological Communities:
+  Community C0 (1,068 proteins) | Top Hubs: EGFR, GRB2, MAPT, COPS5, DYNLL1
+      Lead Protein Role: Epidermal growth factor receptor
+  Community C1 (771 proteins) | Top Hubs: RPS27A, UBC, UBA52, TP53, H4C6
+      Lead Protein Role: Ubiquitin-40S ribosomal protein S27a
+  Community C2 (634 proteins) | Top Hubs: TRAF6, TRAF2, SQSTM1, BIRC2, BTRC
+      Lead Protein Role: TNF receptor-associated factor 6
+  Community C3 (554 proteins) | Top Hubs: HDAC1, ACTB, ACTG1, RBBP4, HDAC2
+      Lead Protein Role: Histone deacetylase 1
+  Community C4 (501 proteins) | Top Hubs: DCTN1, AP2B1, CAPZB, RAB7A, AP2M1
+      Lead Protein Role: Dynactin subunit 1
